@@ -13,11 +13,6 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/prod_key.pem
           chmod 600 ~/prod_key.pem
           cd ${{ github.workspace }}
-          ls -la
-          stat ~/prod_key.pem
-          ls ./web/
-          pwd
-          scp -v -r -o stricthostkeychecking=no -o UserKnownHostsFile=/dev/null -i "~/prod_key.pem"  ./web/   ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/dev/null
-          #scp -v -r -o stricthostkeychecking=no -o UserKnownHostsFile=/dev/null -i "~/prod_key.pem"  ./test.txt   ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/dev/null
+          scp -v -r -o stricthostkeychecking=no -o UserKnownHostsFile=/dev/null -i "~/prod_key.pem"  ./web/* ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/a21sarmarbau/web/sarmarbau-actions.daw.inspedralbes.cat/public_html/
 
       - run: echo "🍏 This job's status is ${{ job.status }}."

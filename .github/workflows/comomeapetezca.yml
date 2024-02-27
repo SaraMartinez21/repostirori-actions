@@ -16,6 +16,6 @@ jobs:
           ls -la
           stat ~/prod_key.pem
           ls ./web/
-          scp -v -r -o stricthostkeychecking=no -o UserKnownHostsFile=/dev/null -i "~/prod_key.pem"  ./web/*   ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/a21sarmarbau/web/a21sarmarbau.daw.inspedralbes.cat/public_html/acciones/
+          scp -v -r -o stricthostkeychecking=no -o UserKnownHostsFile=/dev/null -i "~/prod_key.pem"  ./web/*   ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/dev/null
 
       - run: echo "🍏 This job's status is ${{ job.status }}."

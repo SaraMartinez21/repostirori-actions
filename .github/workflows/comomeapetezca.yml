@@ -13,13 +13,12 @@ jobs:
           cd ${{ github.workspace }} /vue-project/
           npm install
           npm run build
-          npm run generate
 
       - name: scp a produccio
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/prod_key.pem
           chmod 600 ~/prod_key.pem
           cd ${{ github.workspace }}/vue-project/
-          scp -v -r -o stricthostkeychecking=no -o UserKnownHostsFile=/dev/null -i "~/prod_key.pem"  ./web/vue-project/dist/* ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/a21sarmarbau/web/sarmarbau-actions.daw.inspedralbes.cat/public_html/
+          scp -v -r -o stricthostkeychecking=no -o UserKnownHostsFile=/dev/null -i "~/prod_key.pem"  ./dist/* ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/a21sarmarbau/web/sarmarbau-actions.daw.inspedralbes.cat/public_html/
 
       - run: echo "🍏 This job's status is ${{ job.status }}."

@@ -13,6 +13,7 @@ jobs:
           cd ${{ github.workspace }} /vue-project/
           npm install
           npm run build
+          npm run generate
 
       - name: scp a produccio
         run: |
